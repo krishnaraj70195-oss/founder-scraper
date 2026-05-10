@@ -1,20 +1,21 @@
-FROM python:3.11-slim
+FROM node:20-bookworm
 
 WORKDIR /app
 
-# Install system dependencies for crawl4ai (browser support)
+# Install Python 3.11
 RUN apt-get update && apt-get install -y \
-    chromium-browser \
-    chromium-driver \
-    curl \
-    wget \
-    gnupg \
+    python3 \
+    python3-pip \
+    python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && \
-    python -m playwright install chromium
+RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
+
+# Install browsers for crawl4ai
+RUN npx -y playwright install-deps && \
+    python3 -m playwright install chromium
 
 # Copy all app files
 COPY . .
@@ -24,6 +25,7 @@ RUN mkdir -p output input
 
 # Set environment
 ENV PYTHONUNBUFFERED=1
+ENV PLAYWRIGHT_BROWSERS_PATH=/app/.playwright
 
 # Run the scraper
 CMD ["python3", "main.py"]
