@@ -1,0 +1,47 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv
+
+# Output files (may contain sensitive data)
+output/
+results.csv
+failed.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+*.swp
+*.swo
+*~
+
+# Dependencies
+.cache/
+crawl4ai/
+
+# Logs
+*.log
