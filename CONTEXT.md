@@ -94,9 +94,9 @@ curl -x http://107.173.47.31:8888 https://httpbin.org/ip
 
 ### OpenAI
 ```
-Key: sk-proj-YOUR-KEY-HERE
+Key: Set in .env file (see .env.example)
 Model: gpt-4o-mini (cheap, fast)
-Location: .env file (already configured)
+Location: .env file (keep private, not in repo)
 ```
 
 ---

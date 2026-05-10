@@ -1,7 +1,4 @@
-playwright
-openai
-pandas
-beautifulsoup4
-aiofiles
-python-dotenv
-tldextract
+crawl4ai>=0.3.0
+openai>=1.0.0
+python-dotenv>=0.19.0
+aiofiles>=23.0.0

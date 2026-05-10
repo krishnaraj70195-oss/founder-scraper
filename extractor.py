@@ -23,12 +23,15 @@ class WebsiteExtractor:
         if self.crawler:
             await self.crawler.close()
 
-    async def scrape_website(self, url):
+    async def scrape_website(self, url, proxy=None):
         """Extract text from website using crawl4ai"""
         try:
+            # Use provided proxy or fall back to default
+            active_proxy = proxy if proxy is not None else self.proxy
+
             result = await self.crawler.arun(
                 url,
-                proxy=self.proxy,
+                proxy=active_proxy,
                 bypass_cache=True,
                 timeout=self.timeout,
             )
